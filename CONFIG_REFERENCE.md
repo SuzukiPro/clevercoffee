@@ -249,6 +249,7 @@ For each LED type (status, brew, steam):
 - **Valid Values**:
     - `0`: TSIC 306
     - `1`: DS18B20
+    - `2`: PT100
 - **Description**: Temperature sensor type
 
 ## Pressure Sensor

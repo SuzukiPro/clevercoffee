@@ -35,6 +35,10 @@
 #include "hardware/pinmapping.h"
 #include "hardware/tempsensors/TempSensorDallas.h"
 #include "hardware/tempsensors/TempSensorTSIC.h"
+#include "hardware/tempsensors/TempSensorPT100.h"
+
+// Adafruit max 31865
+#include <Adafruit_MAX31865.h>
 
 // User configuration & defaults
 #include "defaults.h"
@@ -1155,11 +1159,16 @@ void setup() {
 
     const int tempSensorType = config.get<int>("hardware.sensors.temperature.type");
 
+    LOGF(WARNING, "using sensor %0i", tempSensorType);
+
     if (tempSensorType == 0) {
         tempSensor = new TempSensorTSIC(PIN_TEMPSENSOR);
     }
     else if (tempSensorType == 1) {
         tempSensor = new TempSensorDallas(PIN_TEMPSENSOR);
+    }
+    else if (tempSensorType == 2) {
+        tempSensor = new TempSensorPT100(PIN_TEMPSENSOR);
     }
 
     if (tempSensor != nullptr) {

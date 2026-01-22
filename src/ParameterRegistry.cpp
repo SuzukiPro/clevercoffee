@@ -57,7 +57,7 @@ static constexpr const char* const blinkingModes[] = {"Off", "Near Setpoint", "A
 static constexpr const char* const logLevels[] = {"TRACE", "DEBUG", "INFO", "WARNING", "ERROR", "FATAL", "SILENT"};
 static constexpr const char* const oledTypes[] = {"SH1106 (1.3\")", "SSD1306 (0.96\")"};
 static constexpr const char* const oledAddresses[] = {"0x3C", "0x3D"};
-static constexpr const char* const tempSensorTypes[] = {"TSIC306", "Dallas DS18B20"};
+static constexpr const char* const tempSensorTypes[] = {"TSIC306", "Dallas DS18B20", "PT100"};
 static constexpr const char* const scaleTypes[] = {"HX711 (2 load cell controllers)", "HX711 (1 load cell controller)", "Bluetooth"};
 
 void ParameterRegistry::initialize(Config& config) {
@@ -1141,7 +1141,7 @@ void ParameterRegistry::initialize(Config& config) {
         2401,
         nullptr,
         tempSensorTypes,
-        2,
+        3,
         "Type of temperature sensor connected",
         [] { return true; },
         true
